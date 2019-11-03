@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title%}
+             Twitter
+        {% endblock%}
+
+
+
+    </title>
+</head>
+<body>
+
+    <div>
+        {% if user.is_authenticated %}
+        {{user.username}}
+        <a href = "{% url 'logout' %}"> Log Out </a>
+        {%else%}
+         <a href = "{% url 'auth' %}"> Sign In/Sign Up </a>
+         {% endif%}
+    </div>
+    {% block content%}
+    {% endblock%}
+</body>
+</html>

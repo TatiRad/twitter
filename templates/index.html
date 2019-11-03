@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{% block content%}
+    <h1> Twitter</h1>
+    {% if user.is_authenticated %}
+        <form method = "POST" >
+            {% csrf_token %}
+            <textarea name = "text"></textarea>
+            <button>Create post</button>
+        </form>
+    {%endif%}
+    {%for message in messages%}
+        <div>
+            <pre>{{message.text}}</pre><br>
+            {{message.author.username}}
+        </div>
+    {%endfor%}
+
+{% endblock%}
